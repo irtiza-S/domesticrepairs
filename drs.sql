@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS issues (
 );
 
 INSERT INTO issues(userid, applianceType, ageOfAppliance, manufacturer, faultSummary, faultDescription, workBudget, dateCreated, status)
-VALUES(3, "washing machine", 5, "beko", "broken lid", "front lid of washing machine doesnt close properly", 50, CURRENT_TIMESTAMP, 'unassigned');
+    VALUES(1, "washing machine", 5, "beko", "broken lid", "front lid of washing machine doesnt close properly", 50, CURRENT_TIMESTAMP, 'unassigned');
 
 
 
