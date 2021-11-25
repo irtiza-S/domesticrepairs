@@ -29,13 +29,32 @@
 				<label for="pass2">Password (again)</label><br />
 				<input type="password" name="password2" placeholder="your chosen password">
 			</p>
-            
+            <p>
+                <input type="hidden" name="lat" id='lat'>
+                <input type="hidden" name="lon" id='lon'>
+            </p>
 			<p><input type="submit" value="Create"></p>
 		</form>
 		</main>
         
         <script>
-            
+            if (navigator.geolocation) {
+              console.log('Geolocation API supported!')
+              navigator.geolocation.getCurrentPosition(onSuccess, onError)
+            }
+
+            function onSuccess(position) {
+              const lat = position.coords.latitude
+              const lon = position.coords.longitude
+              document.querySelector('#lat').value = lat
+              document.querySelector('#lon').value = lon
+              console.log(document.querySelector('#lat').value)
+              console.log(document.querySelector('#lon').value)
+            }
+
+            function onError(error) {
+              console.log(error.message)
+            }
         </script>
 	</body>
 </html>
