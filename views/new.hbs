@@ -32,11 +32,11 @@
                 </p>
                 <p>
                     <label for='age'>Age of Appliance: </label><br />
-                    <input type="range" min="1" max="10" value="" class="slider age-slider" id="myRange">
+                    <input type="range" min="1" max="10" value="" id="age-slider">
                     <span id='age-value'>10</span>
                 </p>
                 <p>
-                    <label>
+                    <label for='manufacturer'>
                       Appliance Manufacturer: <br />
                       <select name="manufacturer">
                         <option value="">--choose--</option>
@@ -48,19 +48,46 @@
                       </select>
                     </label>
                 </p>
-                
+                <p>
+                    <label for='fault-summary'>Fault Summary: </label><br />
+                    <textarea name='fault-summary' placeholder='please summarize the appliance fault, (maximum 100 characters)' maxlength='100'></textarea>
+                </p>
+                <p>
+                    <label for='fault-description'>Fault Description: </label><br />
+                    <textarea name='fault-description' placeholder='provide a description of the fault.'></textarea>
+                </p>
+                <p>
+                    <label for='budget'>Work Budget: </label><br />
+                    <input type="range" min="0" max="200" step='10' value="" id="price-slider">
+                    <span id='price-value'>0</span>
+                </p>
+                <p>
+                    <label for='status'>Status: </label>
+                    <input type='text' placeholder='please type in '
+                </p>
                 <p><input type='submit' value='add issue'></p>
             </form>
             
             <script>
-                const slider= document.querySelector('.age-slider')
-                const value = document.querySelector('#age-value')
+                const ageslider= document.querySelector('#age-slider')
+                const agevalue = document.querySelector('#age-value')
                 
-                value.textContent = slider.value
-                slider.oninput = function() {
+                agevalue.textContent = ageslider.value
+                ageslider.oninput = function() {
                     value.textContent = parseInt(this.value)
-                    console.log(value)
+//                     console.log(value)
                 }
+                
+                const priceslider= document.querySelector('#price-slider')
+                const pricevalue = document.querySelector('#price-value')
+                
+                pricevalue.textContent = priceslider.value
+                priceslider.oninput = function() {
+                    pricevalue.textContent = parseInt(this.value)
+//                     console.log(value)
+                }
+                
+                
             </script>
         </main>
 	</body>
