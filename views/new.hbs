@@ -13,32 +13,55 @@
 	<body>
 		<header>
 			<h1>Add new issue</h1>
-			<a href="/logout">Log out</a><a href="/new">Add a new issue</a>
+			<a href="/logout">Log out</a>
 		</header>
         <main>
-            {{#if authorised}}
-                <p>Logged in as <strong>{{authorised}}</strong></p>
-            {{/if}}
             <form action="/new" method="post" enctype="multipart/form-data">
                 <p>
-                    <label for="name">Type of appliance</label><br />
-                    <datalist for='applianceType' id='appliancetype'>
-                        <option value="washing machine">
-                        <option value="cooker">
-                        <option value="freezer">
-                        <option value="refrigerator">
-                        <option value="clothes dryer">
-                        <option value="microwave">
-                    </datalist>
+                   <label>
+                      Appliance Type: <br />
+                      <select name="applianceType">
+                        <option value="">--choose--</option>
+                        <option value="washing-machine">Washing Machine</option>
+                        <option value="clothes-dryer">Clothes Dryer</option>
+                        <option value="cooker">Cooker</option>
+                        <option value="refrigerator">Refrigerator</option>
+                        <option value="freezer">Freezer</option>
+                      </select>
+                    </label>
                 </p>
                 <p>
-                    <label for='age'>Age</label><br />
-                    <input type="range" min="1" max="10" value="{{body.age}}" class="slider" id="myRange">
+                    <label for='age'>Age of Appliance: </label><br />
+                    <input type="range" min="1" max="10" value="" class="slider age-slider" id="myRange">
+                    <span id='age-value'>10</span>
                 </p>
                 <p>
-                    <label></label>
+                    <label>
+                      Appliance Manufacturer: <br />
+                      <select name="manufacturer">
+                        <option value="">--choose--</option>
+                        <option value="beko">Beko</option>
+                        <option value="samsung">Samsung</option>
+                        <option value="indesit">Indesit</option>
+                        <option value="electrolux">Electrolux</option>
+                        <option value="LG">LG</option>
+                      </select>
+                    </label>
                 </p>
+                
+                <p><input type='submit' value='add issue'></p>
             </form>
+            
+            <script>
+                const slider= document.querySelector('.age-slider')
+                const value = document.querySelector('#age-value')
+                
+                value.textContent = slider.value
+                slider.oninput = function() {
+                    value.textContent = parseInt(this.value)
+                    console.log(value)
+                }
+            </script>
         </main>
 	</body>
 </html>

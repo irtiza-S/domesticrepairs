@@ -69,4 +69,22 @@ router.post('/login', async context => {
 	}
 })
 
+router.get('/new', async context => {
+    console.log('GET /new')
+    const authorised = context.cookies.get('authorised')
+    if(authorised === undefined) context.response.redirect('/login')
+    const body = await handle.renderView('new')
+    context.response.body = body
+    
+})
+
+router.post('/new', async context => {
+    console.log('POST /new')
+    const body = context.request.body({ type: 'form'})
+    const value = await body.value
+    const obj = Object.fromEntries(value)
+    console.log(obj)
+    
+})
+
 export default router
