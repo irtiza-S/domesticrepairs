@@ -21,4 +21,3 @@ INSERT INTO issues(userid, applianceType, ageOfAppliance, manufacturer, faultSum
 
 
 
-
