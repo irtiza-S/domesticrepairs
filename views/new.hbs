@@ -63,7 +63,7 @@
                 </p>
                 <p>
                     <label for='status'>Status: </label>
-                    <input type='text' placeholder='please type in '
+                    <input type='text' placeholder='please leave this field as "unassigned"'>
                 </p>
                 <p><input type='submit' value='add issue'></p>
             </form>
@@ -74,7 +74,7 @@
                 
                 agevalue.textContent = ageslider.value
                 ageslider.oninput = function() {
-                    value.textContent = parseInt(this.value)
+                    agevalue.textContent = parseInt(this.value)
 //                     console.log(value)
                 }
                 
