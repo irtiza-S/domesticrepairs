@@ -7,6 +7,7 @@ import { Handlebars } from 'https://deno.land/x/handlebars/mod.ts'
 // import { parse } from 'https://deno.land/std/flags/mod.ts'
 
 import { login, register } from './modules/accounts.js'
+import { addIssue } from './modules/issues.js'
 
 const handle = new Handlebars({ defaultLayout: '' })
 
@@ -74,17 +75,16 @@ router.get('/new', async context => {
     const authorised = context.cookies.get('authorised')
     if(authorised === undefined) context.response.redirect('/login')
     const body = await handle.renderView('new')
-    context.response.body = body
-    
+    context.response.body = body  
 })
 
 router.post('/new', async context => {
     console.log('POST /new')
-    const body = context.request.body({ type: 'form'})
-    const value = await body.value
-    const obj = Object.fromEntries(value)
-    console.log(obj)
-    
+    const body = await context.request.body({ type: 'form-data'})
+    const data = await body.value.read()
+    data.username = context.cookies.get('authorised')
+    await addIssue(data)
+    context.response.redirect('/')
 })
 
 export default router
