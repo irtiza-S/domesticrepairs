@@ -24,6 +24,6 @@ export async function register(data) {
 	const password = await hash(data.password, salt)
 	const sql = `INSERT INTO accounts(user, pass, locationLongitude, locationLatitude) VALUES("${data.username}", "${password}", "${data.lon}", "${data.lat}")`
 	console.log(sql)
-	const records = await db.query(sql)
+	const _records = await db.query(sql)
 	return true
 }

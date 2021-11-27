@@ -14,7 +14,7 @@ const handle = new Handlebars({ defaultLayout: '' })
 const router = new Router()
 
 // the routes defined here
-router.get('/', async context => {
+router.get('/', context => {
 	const authorised = context.cookies.get('authorised')
 	if (authorised === 'undefined') context.response.redirect('/login')
 	context.response.redirect('/home')
@@ -24,7 +24,7 @@ router.get('/home', async context => {
     const authorised = context.cookies.get('authorised')
     if(authorised === undefined) context.response.redirect('/login')
     const data = { authorised } //stores the current logged user
-    let records = await getAll() //returns an array
+    const records = await getAll() //returns an array
     data.records = records
     console.log(data)
     

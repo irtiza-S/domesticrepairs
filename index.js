@@ -1,7 +1,7 @@
 
 /* index.js */
 
-import { Application, Router, Status } from 'https://deno.land/x/oak@v6.5.1/mod.ts'
+import { Application } from 'https://deno.land/x/oak@v6.5.1/mod.ts'
 import { Handlebars } from 'https://deno.land/x/handlebars/mod.ts'
 import { parse } from 'https://deno.land/std/flags/mod.ts'
 
