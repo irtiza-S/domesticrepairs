@@ -7,7 +7,7 @@ import { Handlebars } from 'https://deno.land/x/handlebars/mod.ts'
 // import { parse } from 'https://deno.land/std/flags/mod.ts'
 
 import { login, register } from './modules/accounts.js'
-import { addIssue } from './modules/issues.js'
+import { getAll, addIssue } from './modules/issues.js'
 
 const handle = new Handlebars({ defaultLayout: '' })
 
@@ -23,9 +23,15 @@ router.get('/', async context => {
 router.get('/home', async context => {
     const authorised = context.cookies.get('authorised')
     if(authorised === undefined) context.response.redirect('/login')
-    const data = { authorised }
+    const data = { authorised } //stores the current logged user
+    let records = await getAll() //returns an array
+    data.records = records
+    console.log(data)
+    
     const body = await handle.renderView('home', data)
-    context.response.body = body
+    console.log(body)
+    context.response.body = body 
+
 })
 
 router.get('/login', async context => {

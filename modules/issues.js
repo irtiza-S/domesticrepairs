@@ -5,7 +5,10 @@ import { db } from './db.js'
 
 export async function getAll() {
     console.log('getAll()')
-    
+    let sql = 'SELECT * FROM issues'
+    let result = await db.query(sql)
+//     console.log("getAll() function result variable: " + result)
+    return result
 }
 
 export async function addIssue(data) {
@@ -30,6 +33,7 @@ async function addIssueDetails(data) {
     console.log(result)
     return result.lastInsertId
 }
+
 
 // ISO Date String: 2021-11-26T21:43:01.986Z
 // ISO Date String: 2021-11-26T21:43:01 <=== this is what we want
