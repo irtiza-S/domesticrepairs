@@ -1,0 +1,97 @@
+
+<!doctype html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Home Page</title>
+		<meta name="description" content="form to add new books">
+		<meta name="author" content="Mark Tyers">
+		<link href="/style.css" type="text/css" rel="stylesheet" />
+		<script type="module" src="/main.js"></script>
+	</head>
+	<body>
+		<header>
+			<h1>Add new issue</h1>
+			<a href="/logout">Log out</a><a href='/home'>Home</a>
+		</header>
+        <main>
+            <form action="/new" method="post" enctype="multipart/form-data">
+                <p>
+                   <label>
+                      Appliance Type: <br />
+                      <select name="applianceType" required>
+                        <option value="">--choose--</option>
+                        <option value="washing-machine">Washing Machine</option>
+                        <option value="clothes-dryer">Clothes Dryer</option>
+                        <option value="cooker">Cooker</option>
+                        <option value="refrigerator">Refrigerator</option>
+                        <option value="freezer">Freezer</option>
+                      </select>
+                    </label>
+                </p>
+                <p>
+                    <label for='age'>Age of Appliance: </label><br />
+                    <input name='age-slider' type="range" min="1" max="10" value="" id="age-slider" required>
+                    <span id='age-value'>10</span>
+                </p>
+                <p>
+                    <label for='manufacturer'>
+                      Appliance Manufacturer: <br />
+                      <select name="manufacturer" required>
+                        <option value="">--choose--</option>
+                        <option value="beko">Beko</option>
+                        <option value="samsung">Samsung</option>
+                        <option value="indesit">Indesit</option>
+                        <option value="electrolux">Electrolux</option>
+                        <option value="LG">LG</option>
+                      </select>
+                    </label>
+                </p>
+                <p>
+                    <label for='fault-summary'>Fault Summary: </label><br />
+                    <textarea name='fault-summary' placeholder='please summarize the appliance fault, (maximum 100 characters)' maxlength='100' required></textarea>
+                </p>
+                <p>
+                    <label for='fault-description'>Fault Description: </label><br />
+                    <textarea name='fault-description' placeholder='provide a description of the fault.' required></textarea>
+                </p>
+                <p>
+                    <label for='budget'>Work Budget: </label><br />
+                    <input type="range" name='price-slider' min="0" max="200" step='10' value="" id="price-slider" required>
+                    <span id='price-value'>0</span>
+                </p>
+                <p>
+                    <label for='status'>Status: </label><br />
+                    <select name='status' for='status' required>
+                       <option value="assigned">Assigned</option>
+                       <option value="unassigned">Unassigned</option> 
+                    </select>
+                </p>
+                <p><input type='submit' value='add issue'></p>
+            </form>
+            
+            <script>
+                const ageslider= document.querySelector('#age-slider')
+                const agevalue = document.querySelector('#age-value')
+                
+                agevalue.textContent = ageslider.value
+                ageslider.oninput = function() {
+                    agevalue.textContent = parseInt(this.value)
+//                     console.log(value)
+                }
+                
+                const priceslider= document.querySelector('#price-slider')
+                const pricevalue = document.querySelector('#price-value')
+                
+                pricevalue.textContent = priceslider.value
+                priceslider.oninput = function() {
+                    pricevalue.textContent = parseInt(this.value)
+//                     console.log(value)
+                }
+                
+                
+            </script>
+        </main>
+	</body>
+</html>
