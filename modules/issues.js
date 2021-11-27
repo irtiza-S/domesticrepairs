@@ -5,7 +5,9 @@ import { db } from './db.js'
 
 export async function getAll() {
     console.log('getAll()')
-    
+    let sql = 'SELECT * FROM issues'
+    let result = await db.query(sql)
+    return result
 }
 
 export async function addIssue(data) {
@@ -16,14 +18,13 @@ export async function addIssue(data) {
 }
 
 async function addIssueDetails(data) {
-    console.log(data)
     let sql = `SELECT id FROM accounts WHERE user = "${data.username}"`
     let result = await db.query(sql)
     const userid = result[0].id
     const now = new Date().toISOString()
     const date = now.slice(0, 19).replace('T', ' ')
     console.log(date)
-    sql = `INSERT INTO issues(userid, applianceType, ageOfAppliance, manufacturer, faultSummary, faultDescription, workBudget, dateCreated, status)\ VALUES(${userid}, "${data.applianceType}", ${data['age-slider']}, "${data.manufacturer}", "${data['fault-summary']}", "${data['fault-description']}", ${data['price-slider']}, "${date}", "${data.status}");`
+    sql = `INSERT INTO issues(userid, applianceType, ageOfAppliance, manufacturer, faultSummary, faultDescription, workBudget, dateCreated, status, username)\ VALUES(${userid}, "${data.applianceType}", ${data['age-slider']}, "${data.manufacturer}", "${data['fault-summary']}", "${data['fault-description']}", ${data['price-slider']}, "${date}", "${data.status}", "${data.username}");`
     console.log(sql)
     sql = sql.replace('""', "NULL")
     result = await db.query(sql)
@@ -31,7 +32,5 @@ async function addIssueDetails(data) {
     return result.lastInsertId
 }
 
-// ISO Date String: 2021-11-26T21:43:01.986Z
-// ISO Date String: 2021-11-26T21:43:01 <=== this is what we want
 
 

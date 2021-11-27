@@ -13,11 +13,31 @@
 	<body>
 		<header>
 			<h1>Home</h1>
-				<a href="/logout">Log out</a><a href="/new">Add a new issue</a>
+			<a href="/logout">Log out</a><a href="/new">Add a new issue</a>
 		</header>
 	<main>
-        
-		<p>This is the home page. Users can see it without logging in.</p>
+        <h3>Issues</h3>
+        <ul class='issues-list'>
+            
+        </ul>
+        <table>
+            <tr>
+                <th>Type of appliance</th>
+                <th>Summary</th>
+                <th>Date of issue</th>
+                <th>Status</th>
+            </tr>
+            {{#each records}}
+                <tr>
+                    <td>{{this.applianceType}}</td>
+                    <td>{{this.faultSummary}}</td>
+                    <td>{{this.dateCreated}}</td>
+                    <td>{{this.status}}</td>
+                </tr>   
+            {{/each}}
+        </table>
+               
+<!-- 		<p>This is the home page. Users can see it without logging in.</p> -->
 		
 	</main>
 	</body>
