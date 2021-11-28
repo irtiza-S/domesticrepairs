@@ -5,8 +5,8 @@ import { db } from './db.js'
 
 export async function getAll() {
     console.log('getAll()')
-    let sql = 'SELECT * FROM issues'
-    let result = await db.query(sql)
+    const sql = 'SELECT * FROM issues'
+    const result = await db.query(sql)
     return result
 }
 

@@ -1,7 +1,7 @@
 
 /* index.js */
 
-import { Application, Router, Status } from 'https://deno.land/x/oak@v6.5.1/mod.ts'
+import { Application } from 'https://deno.land/x/oak@v6.5.1/mod.ts'
 import { Handlebars } from 'https://deno.land/x/handlebars/mod.ts'
 import { parse } from 'https://deno.land/std/flags/mod.ts'
 
@@ -15,7 +15,7 @@ const port = argPort ? Number(argPort) : defaultPort
 const app = new Application()
 const handle = new Handlebars({ defaultLayout: '' })
 
-// error handler
+// error handler ... 
 app.use(async (context, next) => {
   try {
 	console.log(context.request.url.href)
@@ -45,7 +45,7 @@ app.use( async context => {
 		console.log('404 PAGE NOT FOUND')
 		const body = await handle.renderView('404')
 		context.response.body = body
-// 		context.response.body = '404 PAGE NOT FOUND'
+// 		context.response.body = '404 PAGE NOT FOUND...'
 	} catch(err) {
 		console.error(err)
 	}

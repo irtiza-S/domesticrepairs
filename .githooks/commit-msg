@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Get the commit message from file, which just contains the message
+echo "COMMIT-MSG HOOK"
+commitMessage=$(cat $1)
+
+#check the length of the message - if it's less than 10, send a warning to rewrite the commit msg since it's not detailed enough
+
+MSG_LENGTH=${#commitMessage}
+
+echo $MSG_LENGTH
+THRESHOLD=10
+
+if (($MSG_LENGTH<=$THRESHOLD))
+then
+    echo "Your commit isn't detailed enough, needs to be longer."
+    exit 1
+else
+    echo "Good, your commit message is long enough!"
+    exit 0 
+fi
+
+
+
