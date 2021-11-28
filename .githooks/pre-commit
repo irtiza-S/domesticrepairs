@@ -5,5 +5,4 @@ echo "PRE-COMMIT"
 
 set +e
 deno lint --unstable
-echo $(RUN_LINTER)
 set -e
