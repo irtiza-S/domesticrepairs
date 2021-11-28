@@ -11,11 +11,11 @@ CURRENT_BRANCH=$(git symbolic-ref --short HEAD)
 read -p 'would you like to push your code? yes/no: ' PUSH_DECISION
 echo ${PUSH_DECISION}
 
-if [[ $PUSH_DECISION == 'yes' ]]
+if [[ $PUSH_DECISION = 'yes' ]]
 then
     echo $(git push -u origin "${CURRENT_BRANCH}")
     exit 0
-elif [[ $PUSH_DECISION == 'no' ]]
+elif [[ $PUSH_DECISION = 'no' ]]
     echo 'ok have a good day'
     exit 1
 fi
