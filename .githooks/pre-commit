@@ -6,7 +6,7 @@ echo "PRE-COMMIT"
 
 deno lint --unstable
 
-echo $?
+
 # currentValue=$?
 # echo ${currentValue}
 # if $currentValue -ne 0
