@@ -1,8 +1,19 @@
 #!/bin/bash
 
+#this git hook is responsible for running a linter and checking the code quality.
+
+
 set -e
 echo "PRE-COMMIT"
 
 set +e
 deno lint --unstable
-set -e
+
+echo $?
+if [[$? -eq 0]]
+then
+    exit 1
+    set e-
+else
+    exit 0
+fi

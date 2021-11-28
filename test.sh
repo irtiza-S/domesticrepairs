@@ -12,4 +12,5 @@ fi
 
 deno lint --unstable
 
+echo $?
 echo "script running"

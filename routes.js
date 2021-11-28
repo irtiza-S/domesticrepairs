@@ -9,13 +9,13 @@ import { Handlebars } from 'https://deno.land/x/handlebars/mod.ts'
 import { login, register } from './modules/accounts.js'
 import { getAll, addIssue } from './modules/issues.js'
 
-let handle = new Handlebars({ defaultLayout: '' })
+var handle = new Handlebars({ defaultLayout: '' })
 
 const router = new Router()
 
 // the routes defined here
 router.get('/', context => {
-	const authorised = context.cookies.get('authorised');
+	const authorised = context.cookies.get('authorised')
 	if (authorised === 'undefined') context.response.redirect('/login')
 	context.response.redirect('/home')
 })
