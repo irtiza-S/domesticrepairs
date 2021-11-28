@@ -45,7 +45,7 @@ app.use( async context => {
 		console.log('404 PAGE NOT FOUND')
 		const body = await handle.renderView('404')
 		context.response.body = body
-// 		context.response.body = '404 PAGE NOT FOUND....'
+// 		context.response.body = '404 PAGE NOT FOUND'
 	} catch(err) {
 		console.error(err)
 	}
