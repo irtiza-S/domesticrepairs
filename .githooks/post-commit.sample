@@ -1,0 +1,22 @@
+#!/bin/bash
+
+#after some work has been done and the work has been committed - the post commit shall do the following tasks.
+set -e
+echo "POST-COMMIT"
+
+clear  #1. clear the terminal
+cd .. #2. change to the root directory
+
+deno run --allow-all --unstable index.js #run the web server and launch the website
+
+
+
+
+# currentValue=$?
+# echo ${currentValue}
+# if $currentValue -ne 0
+# then
+#     exit 1
+# fi
+
+# exit 1
