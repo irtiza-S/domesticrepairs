@@ -12,6 +12,8 @@ then
     echo "This email is invalid, aborting commit. Setting up your config email now... "
     read -p 'Type in your university email: ' UNI_EMAIL
     git config --global user.email "${UNI_EMAIL}"
+else
+    echo 'user.email is valid!!!'
 fi
 
 deno lint --unstable
