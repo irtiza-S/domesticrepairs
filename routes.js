@@ -11,11 +11,11 @@ import { getAll, addIssue } from './modules/issues.js'
 
 const handle = new Handlebars({ defaultLayout: '' })
 
-let router = new Router()
+const router = new Router()
 
 // the routes defined here
 router.get('/', context => {
-	const authorised = context.cookies.get('authorised')
+	const authorised = context.cookies.get('authorised');
 	if (authorised === 'undefined') context.response.redirect('/login')
 	context.response.redirect('/home')
 })
