@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Get the commit message from file, which just contains the message
+echo "COMMIT-MSG HOOK"
 commitMessage=$(cat $1)
 
 #check the length of the message - if it's less than 10, send a warning to rewrite the commit msg since it's not detailed enough

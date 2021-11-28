@@ -3,7 +3,7 @@
 #this hook is responsible for asking the developer if they would like to push their code to github. 
 
 set -e 
-echo "POST COMMIT"
+echo "POST COMMIT" 
 
 #getting user's decision on wanted to push their code
 CURRENT_BRANCH=$(git symbolic-ref --short HEAD)
