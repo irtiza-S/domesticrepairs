@@ -9,9 +9,9 @@ import { Handlebars } from 'https://deno.land/x/handlebars/mod.ts'
 import { login, register } from './modules/accounts.js'
 import { getAll, addIssue } from './modules/issues.js'
 
-let handle = new Handlebars({ defaultLayout: '' })
+const handle = new Handlebars({ defaultLayout: '' })
 
-const router = new Router()
+let router = new Router()
 
 // the routes defined here
 router.get('/', context => {
