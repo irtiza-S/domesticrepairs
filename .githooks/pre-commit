@@ -1,13 +1,7 @@
-#!/bin/sh
+#!/bin/bash
 
 echo "PRE-COMMIT"
 
 RUN_LINTER=$(deno lint --unstable)
 
-if [[ $RUN_LINTER ]]
-then
-    exit 0
-else
-    exit 1
-fi
-
+echo $(RUN_LINTER)
