@@ -10,4 +10,6 @@ then
 	exit 1
 fi
 
+deno lint --unstable
+
 echo "script running"

@@ -9,7 +9,7 @@ import { Handlebars } from 'https://deno.land/x/handlebars/mod.ts'
 import { login, register } from './modules/accounts.js'
 import { getAll, addIssue } from './modules/issues.js'
 
-const handle = new Handlebars({ defaultLayout: '' })
+let handle = new Handlebars({ defaultLayout: '' })
 
 const router = new Router()
 
