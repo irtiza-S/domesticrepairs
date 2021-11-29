@@ -3,11 +3,10 @@
 
 import { Router } from 'https://deno.land/x/oak@v6.5.1/mod.ts'
 import { Handlebars } from 'https://deno.land/x/handlebars/mod.ts'
-// import { upload } from 'https://cdn.deno.land/oak_upload_middleware/versions/v2/raw/mod.ts'
-// import { parse } from 'https://deno.land/std/flags/mod.ts'
+
 
 import { login, register } from './modules/accounts.js'
-import { getAll, addIssue } from './modules/issues.js'
+import { getAllIssues, addIssue, getUnassignedIssues } from './modules/issues.js'
 
 const handle = new Handlebars({ defaultLayout: '' })
 
@@ -24,14 +23,12 @@ router.get('/home', async context => {
     const authorised = context.cookies.get('authorised')
     if(authorised === undefined) context.response.redirect('/login')
     const data = { authorised } //stores the current logged user
-    const records = await getAll() //returns an array
+    const records = await getAllIssues() //returns an array
     data.records = records
     console.log(data)
-    
     const body = await handle.renderView('home', data)
     console.log(body)
     context.response.body = body 
-
 })
 
 router.get('/login', async context => {
@@ -55,9 +52,8 @@ router.post('/register', async context => {
 })
 
 router.get('/logout', context => {
-  // context.cookies.set('authorised', null) // this does the same
-  context.cookies.delete('authorised')
-  context.response.redirect('/')
+    context.cookies.delete('authorised')
+    context.response.redirect('/')
 })
 
 router.post('/login', async context => {
@@ -91,6 +87,20 @@ router.post('/new', async context => {
     data.username = context.cookies.get('authorised')
     await addIssue(data)
     context.response.redirect('/')
+})
+
+router.get('/work', async context => {
+    console.log('GET /work')
+    const authorised = context.cookies.get('authorised')
+    if(authorised === undefined) context.response.redirect('/login')
+    const data = { authorised }
+    const records = await getUnassignedIssues()
+//     for(const record of records) {
+//         console.log(record)
+//     }
+    data.records = records
+    const body = await handle.renderView('work', data)
+    context.response.body = body
 })
 
 export default router

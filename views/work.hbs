@@ -4,7 +4,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>Home Page</title>
+		<title>Available Work</title>
 		<meta name="description" content="form to add new books">
 		<meta name="author" content="Mark Tyers">
 		<link href="/style.css" type="text/css" rel="stylesheet" />
@@ -13,26 +13,27 @@
 	<body>
 		<header>
 			<h1>Domestic Repairs</h1>
-			<a href="/logout">Log out</a><a href="/new">Add a new issue</a><a href='/work'>Available work</a>
+			<a href="/logout">Log out</a><a href="/new">Add a new issue</a>
+            <a href='/home'>Home</a>
 		</header>
-        <main>
-            <h3>Issues</h3>
+        <main> 
+            <h2>Available Work</h2>
             <table>
                 <tr>
+                    <th>Approximate Distance away</th>
                     <th>Type of appliance</th>
                     <th>Summary</th>
-                    <th>Date of issue</th>
-                    <th>Status</th>
+                    <th>Budget</th>
                 </tr>
                 {{#each records}}
                     <tr>
+                        <td>({{this.longitude}}, {{this.latitude}})</td>
                         <td>{{this.applianceType}}</td>
                         <td>{{this.faultSummary}}</td>
-                        <td>{{this.dateCreated}}</td>
-                        <td>{{this.status}}</td>
+                        <td>£{{this.workBudget}}.00</td>
                     </tr>   
                 {{/each}}
-            </table>		
+            </table>
         </main>
 	</body>
 </html>

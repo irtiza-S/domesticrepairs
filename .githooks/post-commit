@@ -2,16 +2,17 @@
 
 #this hook is responsible for asking the developer if they would like to push their code to github. 
 
-set -e
+set -e  #this will exit the script when the first error is encountered: exit code with non-zero value.
 
 exec < /dev/tty
 echo "POST COMMIT" 
 
-#getting user's decision on wanted to push their code
-CURRENT_BRANCH=$(git symbolic-ref --short HEAD)
 
-read -p 'would you like to push your code? yes/no: ' PUSH_DECISION
-echo ${PUSH_DECISION}
+CURRENT_BRANCH=$(git symbolic-ref --short HEAD) #store the current branch 
+
+read -p 'would you like to push your code? yes/no: ' PUSH_DECISION #prompting user for if they want to push their code on the current branch
+
+echo ${PUSH_DECISION} 
 
 if [[ $PUSH_DECISION = 'yes' ]]
 then

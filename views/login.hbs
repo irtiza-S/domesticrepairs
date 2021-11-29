@@ -12,22 +12,23 @@
 	</head>
 	<body>
 		<header>
-		<h1>Log In</h1>
+		<h1>Domestic Repairs</h1>
 		<a href="/register">Register</a>
 		</header>
 		<main>
-		<form action="/login" method="post">
-			<p>
-				<label for="user">Username</label><br />
-				<input type="text" name="username" placeholder="your username" value="{{body.user}}" autofocus>
-			</p>
-			<p>
-				<label for="pass">Password</label><br />
-				<input type="password" name="password" placeholder="your password" value="{{body.pass}}">
-			</p>
-			<p><input type="submit" value="Log in"></p>
-		</form>
-		<p><a href="/">Home page</a></p>
+            <h2>Sign up</h2>
+            <form action="/login" method="post">
+                <p>
+                    <label for="user">Username</label><br />
+                    <input type="text" name="username" placeholder="your username" value="{{body.user}}" autofocus>
+                </p>
+                <p>
+                    <label for="pass">Password</label><br />
+                    <input type="password" name="password" placeholder="your password" value="{{body.pass}}">
+                </p>
+                <p><input type="submit" value="Log in"></p>
+            </form>
+            <p><a href="/">Home page</a></p>
 		</main>
 	</body>
 </html>

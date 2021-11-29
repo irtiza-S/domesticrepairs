@@ -3,10 +3,11 @@
 #this git hook is responsible for first checking the git config user.email value is set to @coventry.ac.uk
 
 
-set -e
+set -e  
 echo "PRE-COMMIT"
-EMAIL=$(git config user.email)
+EMAIL=$(git config user.email) #store command
 
+#check the current registered email is a uni email
 if [[ $EMAIL != *"@coventry.ac.uk" ]]
 then
     echo "This email is invalid, aborting commit. Setting up your config email now... "
