@@ -68,7 +68,12 @@
                        <option value="unassigned">Unassigned</option> 
                     </select>
                 </p>
+                <p>
+                <input type="hidden" name="lat" id='lat'>
+                <input type="hidden" name="lon" id='lon'>
+                </p>
                 <p><input type='submit' value='add issue'></p>
+                
             </form>
             
             <script>
@@ -89,7 +94,23 @@
                     pricevalue.textContent = parseInt(this.value)
 //                     console.log(value)
                 }
-                
+                let lat;
+                let lon;
+                if (navigator.geolocation) {
+                  console.log('Geolocation API supported!')
+                  navigator.geolocation.getCurrentPosition(onSuccess, onError)
+                }
+                function onSuccess(position) {
+                  lat = position.coords.latitude
+                  lon = position.coords.longitude
+                  document.querySelector('#lat').value = lat //set the values of the hidden fields to long and lat
+                  document.querySelector('#lon').value = lon
+                  console.log(document.querySelector('#lat').value)
+                  console.log(document.querySelector('#lon').value)
+                }
+                function onError(error) {
+                  console.log(error.message)
+                }
                 
             </script>
         </main>

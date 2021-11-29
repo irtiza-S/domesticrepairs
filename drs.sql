@@ -13,6 +13,9 @@ CREATE TABLE IF NOT EXISTS issues (
     dateCreated DATETIME,
     status VARCHAR(20) NOT NULL,
     assignedTechnician VARCHAR(20),
+    username VARCHAR(50) DEFAULT NULL,
+    longitude VARCHAR(100) DEFAULT NULL,
+    latitude VARCHAR(100) DEFAULT NULL,
     FOREIGN KEY(userid) REFERENCES accounts(id)
 );
 

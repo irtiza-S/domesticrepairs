@@ -22,7 +22,7 @@ export async function login(data) {
 
 export async function register(data) {
 	const password = await hash(data.password, salt)
-	const sql = `INSERT INTO accounts(user, pass, locationLongitude, locationLatitude) VALUES("${data.username}", "${password}", "${data.lon}", "${data.lat}")`
+	const sql = `INSERT INTO accounts(user, pass) VALUES("${data.username}", "${password}")`
 	console.log(sql)
 	const _records = await db.query(sql)
 	return true

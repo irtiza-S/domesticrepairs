@@ -7,7 +7,7 @@ import { Handlebars } from 'https://deno.land/x/handlebars/mod.ts'
 // import { parse } from 'https://deno.land/std/flags/mod.ts'
 
 import { login, register } from './modules/accounts.js'
-import { getAll, addIssue } from './modules/issues.js'
+import { getAllIssues, addIssue } from './modules/issues.js'
 
 const handle = new Handlebars({ defaultLayout: '' })
 
@@ -24,14 +24,12 @@ router.get('/home', async context => {
     const authorised = context.cookies.get('authorised')
     if(authorised === undefined) context.response.redirect('/login')
     const data = { authorised } //stores the current logged user
-    const records = await getAll() //returns an array
+    const records = await getAllIssues() //returns an array
     data.records = records
     console.log(data)
-    
     const body = await handle.renderView('home', data)
     console.log(body)
     context.response.body = body 
-
 })
 
 router.get('/login', async context => {
@@ -93,4 +91,33 @@ router.post('/new', async context => {
     context.response.redirect('/')
 })
 
+router.get('/work', async context => {
+    console.log('GET /work')
+    const authorised = context.cookies.get('authorised')
+    if(authorised === undefined) context.response.redirect('/login')
+    const data = { authorised }
+    const records = await getAllIssues()
+    for(let record of records) {
+        console.log(record)
+    }
+    data.records = records
+    const body = await handle.renderView('work')
+    context.response.body = body
+})
+
+/* 
+ * const authorised = context.cookies.get('authorised') - DONE
+    if(authorised === undefined) context.response.redirect('/login') -DONE
+    const data = { authorised } //stores the current logged user 
+    const records = await getAllIssues() //returns an array
+    data.records = records
+    console.log(data)
+    const body = await handle.renderView('home', data)
+    console.log(body)
+    context.response.body = body 
+})
+ * 
+ * 
+ * 
+ * */
 export default router
