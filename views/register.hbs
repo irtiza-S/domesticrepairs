@@ -11,29 +11,26 @@
 	</head>
 	<body>
 		<header>
-		<h1>Create an Account</h1>
-		<a href="/login">Log in</a>
+            <h1>Domestic Repairs</h1>
+            <a href="/login">Log in</a>
 		</header>
 		<main>
-		<form action="/register" method="post">
-			<p>
-				<label for="user">Username</label><br />
-				<input type="text" name="username" placeholder="your preferred username" value="{{body.user}}">
-			</p>
-			<p>
-				<label for="pass">Password</label><br />
-				<input type="password" name="password" placeholder="your chosen password">
-			</p>
-			<p>
-				<label for="pass2">Password (again)</label><br />
-				<input type="password" name="password2" placeholder="your chosen password">
-			</p>
-			<p><input type="submit" value="Create"></p>
-		</form>
+            <h2>Create an Account</h2>
+            <form action="/register" method="post">
+                <p>
+                    <label for="user">Username</label><br />
+                    <input type="text" name="username" placeholder="your preferred username" value="{{body.user}}">
+                </p>
+                <p>
+                    <label for="pass">Password</label><br />
+                    <input type="password" name="password" placeholder="your chosen password">
+                </p>
+                <p>
+                    <label for="pass2">Password (again)</label><br />
+                    <input type="password" name="password2" placeholder="your chosen password">
+                </p>
+                <p><input type="submit" value="Create"></p>
+            </form>
 		</main>
-        
-        <script>
-            
-        </script>
 	</body>
 </html>

@@ -3,8 +3,7 @@
 
 import { Router } from 'https://deno.land/x/oak@v6.5.1/mod.ts'
 import { Handlebars } from 'https://deno.land/x/handlebars/mod.ts'
-// import { upload } from 'https://cdn.deno.land/oak_upload_middleware/versions/v2/raw/mod.ts'
-// import { parse } from 'https://deno.land/std/flags/mod.ts'
+
 
 import { login, register } from './modules/accounts.js'
 import { getAllIssues, addIssue, getUnassignedIssues } from './modules/issues.js'
@@ -53,9 +52,8 @@ router.post('/register', async context => {
 })
 
 router.get('/logout', context => {
-  // context.cookies.set('authorised', null) // this does the same
-  context.cookies.delete('authorised')
-  context.response.redirect('/')
+    context.cookies.delete('authorised')
+    context.response.redirect('/')
 })
 
 router.post('/login', async context => {
@@ -97,27 +95,12 @@ router.get('/work', async context => {
     if(authorised === undefined) context.response.redirect('/login')
     const data = { authorised }
     const records = await getUnassignedIssues()
-    for(const record of records) {
-        console.log(record)
-    }
+//     for(const record of records) {
+//         console.log(record)
+//     }
     data.records = records
     const body = await handle.renderView('work', data)
     context.response.body = body
 })
 
-/* 
- * const authorised = context.cookies.get('authorised') - DONE
-    if(authorised === undefined) context.response.redirect('/login') -DONE
-    const data = { authorised } //stores the current logged user 
-    const records = await getAllIssues() //returns an array
-    data.records = records
-    console.log(data)
-    const body = await handle.renderView('home', data)
-    console.log(body)
-    context.response.body = body 
-})
- * 
- * 
- * 
- * */
 export default router

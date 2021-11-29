@@ -4,7 +4,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>New</title>
+		<title>Add new issue </title>
 		<meta name="description" content="form to add new books">
 		<meta name="author" content="Mark Tyers">
 		<link href="/style.css" type="text/css" rel="stylesheet" />
@@ -12,10 +12,11 @@
 	</head>
 	<body>
 		<header>
-			<h1>Add new issue</h1>
+            <h1>Domestic Repairs</h1>
 			<a href="/logout">Log out</a><a href='/home'>Home</a>
 		</header>
         <main>
+            <h2>Add new issue</h2>
             <form action="/new" method="post" enctype="multipart/form-data">
                 <p>
                    <label>
@@ -73,46 +74,8 @@
                 <input type="hidden" name="lon" id='lon'>
                 </p>
                 <p><input type='submit' value='add issue'></p>
-                
             </form>
-            
-            <script>
-                const ageslider= document.querySelector('#age-slider')
-                const agevalue = document.querySelector('#age-value')
-                
-                agevalue.textContent = ageslider.value
-                ageslider.oninput = function() {
-                    agevalue.textContent = parseInt(this.value)
-//                     console.log(value)
-                }
-                
-                const priceslider= document.querySelector('#price-slider')
-                const pricevalue = document.querySelector('#price-value')
-                
-                pricevalue.textContent = priceslider.value
-                priceslider.oninput = function() {
-                    pricevalue.textContent = parseInt(this.value)
-//                     console.log(value)
-                }
-                let lat;
-                let lon;
-                if (navigator.geolocation) {
-                  console.log('Geolocation API supported!')
-                  navigator.geolocation.getCurrentPosition(onSuccess, onError)
-                }
-                function onSuccess(position) {
-                  lat = position.coords.latitude
-                  lon = position.coords.longitude
-                  document.querySelector('#lat').value = lat //set the values of the hidden fields to long and lat
-                  document.querySelector('#lon').value = lon
-                  console.log(document.querySelector('#lat').value)
-                  console.log(document.querySelector('#lon').value)
-                }
-                function onError(error) {
-                  console.log(error.message)
-                }
-                
-            </script>
+            <script src='/newissues.js'></script>
         </main>
 	</body>
 </html>
