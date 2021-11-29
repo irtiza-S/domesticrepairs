@@ -19,8 +19,8 @@ CREATE TABLE IF NOT EXISTS issues (
     FOREIGN KEY(userid) REFERENCES accounts(id)
 );
 
-INSERT INTO issues(userid, applianceType, ageOfAppliance, manufacturer, faultSummary, faultDescription, workBudget, dateCreated, status)
-    VALUES(1, "washing machine", 5, "beko", "broken lid", "front lid of washing machine doesnt close properly", 50, CURRENT_TIMESTAMP, 'unassigned');
+INSERT INTO issues(userid, applianceType, ageOfAppliance, manufacturer, faultSummary, faultDescription, workBudget, dateCreated, status, assignedTechnician)
+    VALUES(5, "washing machine", 5, "beko", "broken lid", "front lid of washing machine doesnt close properly", 50, CURRENT_TIMESTAMP, 'unassigned', NULL);
 
 
 
