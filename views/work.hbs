@@ -26,7 +26,14 @@
                 <th>Summary</th>
                 <th>Budget</th>
             </tr>
-            
+            {{#each records}}
+                <tr>
+                    <td>({{this.longitude}}, {{this.latitude}})</td>
+                    <td>{{this.applianceType}}</td>
+                    <td>{{this.faultSummary}}</td>
+                    <td>£{{this.workBudget}}.00</td>
+                </tr>   
+            {{/each}}
         </table>
 	</main>
 	</body>

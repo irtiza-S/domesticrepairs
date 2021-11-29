@@ -32,3 +32,9 @@ async function addIssueDetails(data) {
     return result.lastInsertId
 }
 
+export async function getUnassignedIssues() {
+    const sql = `SELECT * FROM issues WHERE status = "unassigned"`
+    const result = await db.query(sql)
+//     console.log(result)
+    return result
+}

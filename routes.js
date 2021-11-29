@@ -7,7 +7,7 @@ import { Handlebars } from 'https://deno.land/x/handlebars/mod.ts'
 // import { parse } from 'https://deno.land/std/flags/mod.ts'
 
 import { login, register } from './modules/accounts.js'
-import { getAllIssues, addIssue } from './modules/issues.js'
+import { getAllIssues, addIssue, getUnassignedIssues } from './modules/issues.js'
 
 const handle = new Handlebars({ defaultLayout: '' })
 
@@ -96,12 +96,12 @@ router.get('/work', async context => {
     const authorised = context.cookies.get('authorised')
     if(authorised === undefined) context.response.redirect('/login')
     const data = { authorised }
-    const records = await getAllIssues()
-    for(let record of records) {
+    const records = await getUnassignedIssues()
+    for(const record of records) {
         console.log(record)
     }
     data.records = records
-    const body = await handle.renderView('work')
+    const body = await handle.renderView('work', data)
     context.response.body = body
 })
 
